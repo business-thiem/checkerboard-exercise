@@ -103,6 +103,7 @@ function makeGraident(){
 }
 
 function makeFlashingColors(){
+    makeCheckerBoardColors(); //piggy backing off checkerboard color values
     let squaresContainer = body.getElementsByTagName('div')[0]
     let squares = squaresContainer.getElementsByTagName('div')
     let styleElement = document.createElement('style')
@@ -112,10 +113,10 @@ function makeFlashingColors(){
         animation: rainbow 6s linear infinite;
     }
     .rainbowB{
-        animation: rainbow 8s linear infinite;
+        animation: rainbow 7s linear infinite;
     }
     .rainbowC{
-        animation: rainbow 10s linear infinite;
+        animation: rainbow 8s linear infinite;
     }
     @keyframes rainbow {
         0% { background: red; }
@@ -137,14 +138,20 @@ function makeFlashingColors(){
 
     for(let index = 0; index < squares.length; index++){
         randomIndex = Math.floor(Math.random() * 65)
-        if(!randomIndexArr.includes(randomIndex)){
+        if(!randomIndexArr.includes(randomIndex) && squares[index].style.backgroundColor === 'red'){
             squares[index].classList.add('rainbowA')
             squares[index].classList.remove('rainbowB');
+            squares[index].classList.remove('rainbowC');
             randomIndexArr.unshift(randomIndex)
-        }else{
+        }else if(squares[index].style.backgroundColor === 'black'){
             squares[index].classList.add('rainbowB')
             squares[index].classList.remove('rainbowA');
+            squares[index].classList.remove('rainbowC');
             randomIndexArr.unshift(randomIndex)
+        } else {
+            squares[index].classList.add('rainbowC')
+            squares[index].classList.remove('rainbowA');
+            squares[index].classList.remove('rainbowB');
         }
     }
 }
