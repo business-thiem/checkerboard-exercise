@@ -111,5 +111,65 @@ function makeGraident(){
             squares[index].style.backgroundColor = `rgb(${R-colorDiffB},${G+colorDiffB},${B-colorDiffB})`
         }
     }
+}
+
+function makeFlashingColors(){
+    let squaresContainer = body.getElementsByTagName('div')[0]
+    let squares = squaresContainer.getElementsByTagName('div')
+
+    let styleElement = document.createElement('style')
+
+    let cssClassRules = `
+
+    .rainbowA{
+        animation: rainbow 6s linear infinite;
+    }
+    .rainbowB{
+        animation: rainbow 8s linear infinite;
+    }
+    .rainbowC{
+        animation: rainbow 10s linear infinite;
+    }
+    @keyframes rainbow {
+        0% { background: red; }
+        14% { background: orange; }
+        28% { background: yellow; }
+        42% { background: green; }
+        57% { background: blue; }
+        71% { background: indigo; }
+        85% { background: violet; }
+        100% { background: red; }
+      }
+    `
+
+    // let css = '.rainbow { background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); color: white; padding: 10px; text-align: center; }';
+
+
+    
+
+    styleElement.appendChild(document.createTextNode(cssClassRules))
+    document.head.appendChild(styleElement);
+    
+    let randomIndexArr = [];
+    let randomIndex;
+
+    for(let index = 0; index < squares.length; index++){
+        // let row = Math.floor(index/8) //determines the current row
+        randomIndex = Math.floor(Math.random() * 65)
+        if(!randomIndexArr.includes(randomIndex)){
+            squares[index].classList.add('rainbowA')
+            randomIndexArr.unshift(randomIndex)
+        }else{
+            squares[index].classList.add('rainbowB')
+            randomIndexArr.unshift(randomIndex)
+        }
+    }
+
+    
+
 
 }
+
+makeFlashingColors()
+
+
