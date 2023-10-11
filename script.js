@@ -110,7 +110,6 @@ function makeGraident(){
         } else{
             squares[index].style.backgroundColor = `rgb(${R-colorDiffB},${G+colorDiffB},${B-colorDiffB})`
         }
-        
     }
 
 }
