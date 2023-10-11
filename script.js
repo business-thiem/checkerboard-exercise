@@ -88,3 +88,29 @@ function makeRandomColor(){
 function getRandomColorValue(){
     return Math.floor(Math.random() * 256)
 }
+
+function makeGraident(){
+    makeCheckerBoardColors(); //piggy backing off checkerboard color values
+    let squaresContainer = body.getElementsByTagName('div')[0]
+    let squares = squaresContainer.getElementsByTagName('div')
+
+    let R = 255;
+    let G = 0;
+    let B = 255;
+
+    // myDiv.style.backgroundColor
+
+    for(let index = 0; index < squares.length; index++){
+        let colorDiffA = Math.floor((index*9)/3)
+        let colorDiffB = Math.floor((index*3)/5)
+        // let colorDiff = (index*4)
+        // console.log(colorDiff)
+        if(squares[index].style.backgroundColor === 'red'){
+            squares[index].style.backgroundColor = `rgb(${R-colorDiffA},${G+colorDiffA},${B-colorDiffA})`
+        } else{
+            squares[index].style.backgroundColor = `rgb(${R-colorDiffB},${G+colorDiffB},${B-colorDiffB})`
+        }
+        
+    }
+
+}
