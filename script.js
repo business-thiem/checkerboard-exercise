@@ -158,18 +158,17 @@ function makeFlashingColors(){
         randomIndex = Math.floor(Math.random() * 65)
         if(!randomIndexArr.includes(randomIndex)){
             squares[index].classList.add('rainbowA')
+            squares[index].classList.remove('rainbowB');
             randomIndexArr.unshift(randomIndex)
         }else{
             squares[index].classList.add('rainbowB')
+            squares[index].classList.remove('rainbowA');
             randomIndexArr.unshift(randomIndex)
         }
     }
 
     
 
-
 }
-
-makeFlashingColors()
 
 
