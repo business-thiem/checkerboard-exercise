@@ -142,11 +142,6 @@ function makeFlashingColors(){
       }
     `
 
-    // let css = '.rainbow { background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet); color: white; padding: 10px; text-align: center; }';
-
-
-    
-
     styleElement.appendChild(document.createTextNode(cssClassRules))
     document.head.appendChild(styleElement);
     
