@@ -1,117 +1,65 @@
-
-createTableTwo();
-
+let body = document.getElementsByTagName('body')[0]
 
 
-// table 8x8 
-function createTable(){
-    let rowSize = 8;
-    let colSize = 8;
-    let row = ''
-    let rowContainer = ''
-    let bgColor = 'red';
+function createCheckerBoard(){
+    createContainer()
+}
 
-    let flexContainer = document.createElement('div')
-    flexContainer.style.cssText = `
+
+function createContainer(){
+    let container = document.createElement('div')
+    container.style.cssText = `
     display: flex;
     flex-wrap: wrap;
     width: 800px;
     height: 800px;
     background-color:gray;
+    margin: auto;
+    border: 1px solid white;
     `;
 
-    for(let i = 0; i <= rowSize; i++){
-        row = ''
-        
-        for(let j = 0; j < colSize; j++){
-            let tileElement = `<div style="width: 12.5%; height: 12.5%; background-color: ${bgColor};"></div>`
-            bgColor = getColorRowCol(i,j)
-            row += tileElement
-        }
-        rowContainer += row;
+    for(let i = 0; i<64; i++){
+        let row = Math.floor(i/8) //determines the current row
+        createSquare(container, i, row)
     }
-
-
-    flexContainer.innerHTML = rowContainer
-
-    let body = document.getElementsByTagName('body')
-    body[0].append(flexContainer)
-
-    console.log(body[0])
+    body.appendChild(container)
 }
 
+function createSquare(container, col, row){
+    let square = document.createElement('div')
+    square.style.cssText = `
+    width:12.5%;
+    height:12.5%;
+    `
 
-function getColorRowCol(row, col){
-    let bgColor = 'red';
-
-    let rowEvenOdd = (row % 2 === 0 ? 'even' : 'odd')
-    let colEvenOdd = (col % 2 === 0 ? 'even' : 'odd')
-
-    if(rowEvenOdd === 'even' && colEvenOdd === 'even'){
-        bgColor = 'red'
-    } else if(rowEvenOdd === 'even' && colEvenOdd === 'odd'){
-        bgColor = 'black'
-    }else if(rowEvenOdd === 'odd' && colEvenOdd === 'even'){
-        bgColor = 'black'
-    }else if(rowEvenOdd === 'odd' && colEvenOdd === 'odd'){
-        bgColor = 'red'
+    if(col % 2 === 0 && row % 2 === 0){
+        square.style.backgroundColor = 'red'
+    } else if(col % 2 !== 0 && row % 2 === 0) {
+        square.style.backgroundColor = 'black'
+    } else if(col % 2 === 0 && row % 2 !== 0) {
+        square.style.backgroundColor = 'black'
+    } else if(col % 2 !== 0 && row % 2 !== 0) {
+        square.style.backgroundColor = 'red'
     }
     
-
-    return bgColor
+    container.appendChild(square)
 }
 
-//  -------------------------------------------------------------------------------------------------------
-function createTableTwo(){
-    let rowSize = 8;
-    let colSize = 8;
-    let rowContainer;
-    let bgColor = 'red';
+function makeCheckerBoardColors(){
+    //get the container's squares by i HTML collection
 
-    let flexContainer = document.createElement('div')
-    flexContainer.style.cssText = `
-    display: flex;
-    flex-wrap: wrap;
-    width: 800px;
-    height: 800px;
-    background-color:gray;
-    `;
+    //iterate thru element and set color based on column and row
+}
 
+function makeRandomColor(){
+    //get the container's squares by i HTML collection
+    //make variables for R, G, B (255,255,255) (`R,G,B`)
+    
 
-    // count starts with 0
-    let tileRed = document.createElement('div')
-    tileRed.style.cssText = `
-    width:12.5%;
-    height:12.5%;
-    background-color: red
-    `
+    //iterate thru element and set color based on column and row
 
-    let tileBlack = document.createElement('div')
-    tileBlack.style.cssText = `
-    width:12.5%;
-    height:12.5%;
-    background-color: black
-    `
+}
 
-    // tileRed.style.backgroundColor = 'black'
+createCheckerBoard()
 
-
-    for(let i = 0; i <= rowSize; i++){
-        rowContainer = ''
-        for(let j = 0; j < colSize; j++){
-            if(getColorRowCol(i,j) === 'red'){
-                rowContainer.insertAdjacentElement(tileRed,flexContainer)
-            } else if(getColorRowCol(i,j) === 'black'){
-                rowContainer.insertAdjacentElement(tileBlack, flexContainer)
-            }
-        }
-        // flexContainer.insertAdjacentElement(rowContainer)
-    }
-
-    let body = document.getElementsByTagName('body')
-    body[0].append(flexContainer)
-
-} 
-
-
-
+console.log(body)
