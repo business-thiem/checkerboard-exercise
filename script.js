@@ -152,8 +152,23 @@ function makeFlashingColors(){
             squares[index].classList.add('rainbowC')
             squares[index].classList.remove('rainbowA');
             squares[index].classList.remove('rainbowB');
+            randomIndexArr.unshift(randomIndex)
         }
     }
+
+    setInterval(() => {
+        makeFlashingColors()
+    }, 3000)
+}
+
+
+isPlaying = false;
+function toggleMusic(){
+    
+    // console.log(EventTarget.textContent === 'Play Music')
+    console.log(document.EventTarget)
+    let mySound = new Audio('./onerepublic-iaintworried.mp3')
+    mySound.play()
 }
 
 
