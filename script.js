@@ -1,7 +1,9 @@
 let body = document.getElementsByTagName('body')[0]
 
+createContainer()
 
-function createCheckerBoard(){
+
+function makeGradient(){
     createContainer()
 }
 
@@ -51,42 +53,38 @@ function makeCheckerBoardColors(){
     let squares = squaresContainer.getElementsByTagName('div')
     console.log(squares)
 
+    for(let index = 0; index < squares.length; index++){
+        let row = Math.floor(index/8) //determines the current row
+        let col = index
+        if(col % 2 === 0 && row % 2 === 0){
+            squares[index].style.backgroundColor = 'red'
+        } else if(col % 2 !== 0 && row % 2 === 0) {
+            squares[index].style.backgroundColor = 'black'
+        } else if(col % 2 === 0 && row % 2 !== 0) {
+            squares[index].style.backgroundColor = 'black'
+        } else if(col % 2 !== 0 && row % 2 !== 0) {
+            squares[index].style.backgroundColor = 'red'
+        }
+    }
+
     //iterate thru element and set color based on column and row
 }
 
 function makeRandomColor(){
-    //get the container's squares by i HTML collection
-
     let squaresContainer = body.getElementsByTagName('div')[0]
     let squares = squaresContainer.getElementsByTagName('div')
-    console.log(squares)
 
-    //make variables for R, G, B (255,255,255) (`R,G,B`)
     let R,G,B = 0;
-    // squares[0].style.backgroundColor = 'green'
 
     for(const square of squares){
         R = getRandomColorValue();
         G = getRandomColorValue();
         B = getRandomColorValue();
-        
-        // console.log(square)
-
         square.style.backgroundColor = `rgb(${R},${G},${B})`
     }
-
-    //iterate thru element and set color based on column and row
 
 }
 
 function getRandomColorValue(){
-    return Math.floor(Math.random() * 255)
+    return Math.floor(Math.random() * 256)
 }
-
-
-
-
-createCheckerBoard()
-makeRandomColor()
-
-// console.log(body)
