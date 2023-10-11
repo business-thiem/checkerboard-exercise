@@ -47,19 +47,46 @@ function createSquare(container, col, row){
 
 function makeCheckerBoardColors(){
     //get the container's squares by i HTML collection
+    let squaresContainer = body.getElementsByTagName('div')[0]
+    let squares = squaresContainer.getElementsByTagName('div')
+    console.log(squares)
 
     //iterate thru element and set color based on column and row
 }
 
 function makeRandomColor(){
     //get the container's squares by i HTML collection
+
+    let squaresContainer = body.getElementsByTagName('div')[0]
+    let squares = squaresContainer.getElementsByTagName('div')
+    console.log(squares)
+
     //make variables for R, G, B (255,255,255) (`R,G,B`)
-    
+    let R,G,B = 0;
+    // squares[0].style.backgroundColor = 'green'
+
+    for(const square of squares){
+        R = getRandomColorValue();
+        G = getRandomColorValue();
+        B = getRandomColorValue();
+        
+        // console.log(square)
+
+        square.style.backgroundColor = `rgb(${R},${G},${B})`
+    }
 
     //iterate thru element and set color based on column and row
 
 }
 
-createCheckerBoard()
+function getRandomColorValue(){
+    return Math.floor(Math.random() * 255)
+}
 
-console.log(body)
+
+
+
+createCheckerBoard()
+makeRandomColor()
+
+// console.log(body)
