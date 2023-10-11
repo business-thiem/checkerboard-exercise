@@ -2,11 +2,9 @@ let body = document.getElementsByTagName('body')[0]
 
 createContainer()
 
-
 function makeGradient(){
     createContainer()
 }
-
 
 function createContainer(){
     let container = document.createElement('div')
@@ -51,7 +49,6 @@ function makeCheckerBoardColors(){
     //get the container's squares by i HTML collection
     let squaresContainer = body.getElementsByTagName('div')[0]
     let squares = squaresContainer.getElementsByTagName('div')
-    console.log(squares)
 
     for(let index = 0; index < squares.length; index++){
         let row = Math.floor(index/8) //determines the current row
@@ -66,14 +63,11 @@ function makeCheckerBoardColors(){
             squares[index].style.backgroundColor = 'red'
         }
     }
-
-    //iterate thru element and set color based on column and row
 }
 
 function makeRandomColor(){
     let squaresContainer = body.getElementsByTagName('div')[0]
     let squares = squaresContainer.getElementsByTagName('div')
-
     let R,G,B = 0;
 
     for(const square of squares){
@@ -82,7 +76,6 @@ function makeRandomColor(){
         B = getRandomColorValue();
         square.style.backgroundColor = `rgb(${R},${G},${B})`
     }
-
 }
 
 function getRandomColorValue(){
@@ -98,13 +91,9 @@ function makeGraident(){
     let G = 0;
     let B = 255;
 
-    // myDiv.style.backgroundColor
-
     for(let index = 0; index < squares.length; index++){
         let colorDiffA = Math.floor((index*9)/3)
         let colorDiffB = Math.floor((index*3)/5)
-        // let colorDiff = (index*4)
-        // console.log(colorDiff)
         if(squares[index].style.backgroundColor === 'red'){
             squares[index].style.backgroundColor = `rgb(${R-colorDiffA},${G+colorDiffA},${B-colorDiffA})`
         } else{
@@ -116,9 +105,7 @@ function makeGraident(){
 function makeFlashingColors(){
     let squaresContainer = body.getElementsByTagName('div')[0]
     let squares = squaresContainer.getElementsByTagName('div')
-
     let styleElement = document.createElement('style')
-
     let cssClassRules = `
 
     .rainbowA{
@@ -149,7 +136,6 @@ function makeFlashingColors(){
     let randomIndex;
 
     for(let index = 0; index < squares.length; index++){
-        // let row = Math.floor(index/8) //determines the current row
         randomIndex = Math.floor(Math.random() * 65)
         if(!randomIndexArr.includes(randomIndex)){
             squares[index].classList.add('rainbowA')
@@ -161,9 +147,6 @@ function makeFlashingColors(){
             randomIndexArr.unshift(randomIndex)
         }
     }
-
-    
-
 }
 
 
